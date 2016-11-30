@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2016 Razeware LLC
  *
@@ -90,7 +91,7 @@ extension NotesListViewController {
     if note.image == nil {
     cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
     } else {
-      cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteImageTableViewCell
+      cell = tableView.dequeueReusableCell(withIdentifier: "NoteCellWithImage", for: indexPath) as! NoteImageTableViewCell
     }
     cell.note = note
     return cell
