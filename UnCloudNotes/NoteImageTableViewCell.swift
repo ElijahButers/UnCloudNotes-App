@@ -33,5 +33,7 @@ extension NoteImageTableViewCell {
 
   override func updateNoteInfo(note: Note) {
     super.updateNoteInfo(note: note)
+    
+    noteImage.image = note.image
   }
 }
