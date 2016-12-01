@@ -29,7 +29,7 @@ class Note: NSManagedObject {
   @NSManaged var body: String
   @NSManaged var dateCreated: Date!
   @NSManaged var displayIndex: NSNumber!
-  @NSManaged var image: UIImage?
+  @NSManaged var attachments: Set<Attachment>?
   
   override func awakeFromInsert() {
     super.awakeFromInsert()
