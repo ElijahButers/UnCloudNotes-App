@@ -369,7 +369,7 @@
 				E248B4E91DECDE8F004BF4C2 /* UnCloudNotesDataModel v2.xcdatamodel */,
 				C7F78B93194E1FA900BAF550 /* UnCloudNotesDataModel.xcdatamodel */,
 			);
-			currentVersion = E248B4E91DECDE8F004BF4C2 /* UnCloudNotesDataModel v2.xcdatamodel */;
+			currentVersion = E249B0351DF02A0400FB2CE4 /* UnCloudNotesDataModel v 3.xcdatamodel */;
 			path = UnCloudNotesDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
