@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>F375E4B5-49E7-43BE-A27D-1C54575A4627</UUID>
-        <nextObjectID>112</nextObjectID>
+        <nextObjectID>114</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -51,14 +51,15 @@
         <attribute name="destinationname" type="string">Note</attribute>
         <attribute name="autogenerateexpression" type="bool">1</attribute>
         <relationship name="mappingmodel" type="1/1" destination="XDDEVMAPPINGMODEL" idrefs="z108"></relationship>
-        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z110 z112 z103 z105"></relationship>
-        <relationship name="relationshipmappings" type="0/0" destination="XDDEVRELATIONSHIPMAPPING"></relationship>
+        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z105 z103 z110 z112"></relationship>
+        <relationship name="relationshipmappings" type="0/0" destination="XDDEVRELATIONSHIPMAPPING" idrefs="z114"></relationship>
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z103">
         <attribute name="name" type="string">dateCreated</attribute>
         <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z102"></relationship>
     </object>
     <object type="XDDEVENTITYMAPPING" id="z104">
+        <attribute name="sourcefilterpredicatestring" type="string">image != nil</attribute>
         <attribute name="sourcename" type="string">Note</attribute>
         <attribute name="mappingtypename" type="string">Undefined</attribute>
         <attribute name="mappingnumber" type="int16">1</attribute>
@@ -107,6 +108,17 @@ cBIAAYagrxEBMgAHAAgAFwAzADQANQA/AEAAQQBcAF0AXgBkAGUAcQCHAIgAiQCKAIsAjACNAI4AjwCQ
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z112">
         <attribute name="name" type="string">displayIndex</attribute>
+        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z102"></relationship>
+    </object>
+    <object type="XDDEVRELATIONSHIPMAPPING" id="z113">
+        <attribute name="autogenerateexpression" type="bool">1</attribute>
+        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING"></relationship>
+    </object>
+    <object type="XDDEVRELATIONSHIPMAPPING" id="z114">
+        <attribute name="sourcemappingname" type="string">NoteToNote</attribute>
+        <attribute name="sourcekeypath" type="string">$source</attribute>
+        <attribute name="autogenerateexpression" type="bool">1</attribute>
+        <attribute name="name" type="string">attachments</attribute>
         <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z102"></relationship>
     </object>
 </database>
