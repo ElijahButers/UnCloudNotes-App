@@ -49,6 +49,7 @@
 		E248B4E91DECDE8F004BF4C2 /* UnCloudNotesDataModel v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "UnCloudNotesDataModel v2.xcdatamodel"; sourceTree = "<group>"; };
 		E249B0351DF02A0400FB2CE4 /* UnCloudNotesDataModel v 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "UnCloudNotesDataModel v 3.xcdatamodel"; sourceTree = "<group>"; };
 		E249B0361DF06B6D00FB2CE4 /* Attachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attachment.swift; path = ../Attachment.swift; sourceTree = "<group>"; };
+		E26767041DF9C47000435F14 /* UnCloudNotesDataModel v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "UnCloudNotesDataModel v4.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,11 +374,12 @@
 		C7F78B92194E1FA900BAF550 /* UnCloudNotesDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E26767041DF9C47000435F14 /* UnCloudNotesDataModel v4.xcdatamodel */,
 				E249B0351DF02A0400FB2CE4 /* UnCloudNotesDataModel v 3.xcdatamodel */,
 				E248B4E91DECDE8F004BF4C2 /* UnCloudNotesDataModel v2.xcdatamodel */,
 				C7F78B93194E1FA900BAF550 /* UnCloudNotesDataModel.xcdatamodel */,
 			);
-			currentVersion = E249B0351DF02A0400FB2CE4 /* UnCloudNotesDataModel v 3.xcdatamodel */;
+			currentVersion = E26767041DF9C47000435F14 /* UnCloudNotesDataModel v4.xcdatamodel */;
 			path = UnCloudNotesDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
