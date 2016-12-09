@@ -5,6 +5,7 @@
         <attribute name="image" optional="YES" attributeType="Transformable" valueTransformerName="ImageTransformer" customClassName="UnCloudNotes." syncable="YES"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="attachments" inverseEntity="Note" syncable="YES"/>
     </entity>
+    <entity name="ImageAttachment" representedClassName="UnModuleNotes.ImageAttachment" syncable="YES"/>
     <entity name="Note" representedClassName="UnCloudNotes.Note" syncable="YES">
         <attribute name="body" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -13,7 +14,8 @@
         <relationship name="attachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" inverseName="note" inverseEntity="Attachment" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Note" positionX="-387" positionY="243" width="128" height="176"/>
         <element name="Attachment" positionX="-65" positionY="261" width="218" height="132"/>
+        <element name="Note" positionX="-387" positionY="243" width="128" height="176"/>
+        <element name="ImageAttachment" positionX="-180" positionY="306" width="128" height="52"/>
     </elements>
 </model>
