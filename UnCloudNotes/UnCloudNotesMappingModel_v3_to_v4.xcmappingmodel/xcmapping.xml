@@ -61,7 +61,7 @@
         <attribute name="destinationname" type="string">ImageAttachment</attribute>
         <attribute name="autogenerateexpression" type="bool">1</attribute>
         <relationship name="mappingmodel" type="1/1" destination="XDDEVMAPPINGMODEL" idrefs="z107"></relationship>
-        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z117 z111 z114 z112 z118"></relationship>
+        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z114 z111"></relationship>
         <relationship name="relationshipmappings" type="0/0" destination="XDDEVRELATIONSHIPMAPPING" idrefs="z110"></relationship>
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z104">
@@ -113,7 +113,7 @@ cBIAAYagrxEBlQAHAAgAFwAzADQANQBBAEIAQwBEAGcAaABpAG8AcAB8AJIAkwCUAJUAlgCXAJgAmQCa
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z112">
         <attribute name="name" type="string">caption</attribute>
-        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z103"></relationship>
+        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING"></relationship>
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z113">
         <attribute name="name" type="string">dateCreated</attribute>
@@ -134,10 +134,10 @@ cBIAAYagrxEBlQAHAAgAFwAzADQANQBBAEIAQwBEAGcAaABpAG8AcAB8AJIAkwCUAJUAlgCXAJgAmQCa
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z117">
         <attribute name="name" type="string">width</attribute>
-        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z103"></relationship>
+        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING"></relationship>
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z118">
         <attribute name="name" type="string">height</attribute>
-        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING" idrefs="z103"></relationship>
+        <relationship name="entitymapping" type="1/1" destination="XDDEVENTITYMAPPING"></relationship>
     </object>
 </database>
