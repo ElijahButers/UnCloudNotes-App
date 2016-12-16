@@ -13,4 +13,8 @@ let errorDomain = "Migration"
 
 class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy {
   
+  override func createDestinationInstances(forSource sInstance: NSManagedObject, in mapping: NSEntityMapping, manager: NSMigrationManager) throws {
+    
+    
+  }
 }
