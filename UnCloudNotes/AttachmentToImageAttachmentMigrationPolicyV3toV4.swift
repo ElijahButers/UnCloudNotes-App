@@ -15,6 +15,8 @@ class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy 
   
   override func createDestinationInstances(forSource sInstance: NSManagedObject, in mapping: NSEntityMapping, manager: NSMigrationManager) throws {
     
-    
+    let description = NSEntityDescription.entity(forEntityName: "ImageAttachment", in: manager.destinationContext)
+    let newAttachment = ImageAttachment(entity: description!, insertInto: manager.destinationContext)
   }
+  
 }
