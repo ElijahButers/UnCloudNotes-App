@@ -26,9 +26,16 @@ class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy 
         if let destinaltionName = propertyMapping.name {
           block(propertyMapping, destinaltionName)
         } else {
+          let message = "Attribute destioation not configured properly"
+          let userInfo = [NSLocalizedFailureReasonErrorKey: message]
+          throw NSError(domain: errorDomain, code: 0, userInfo: userInfo)
       }
     }
-  }
+    } else {
+      let message = "No Attribute Mapping found!"
+      let userInfo = [NSLocalizedFailureReasonErrorKey: message]
+      throw NSError(domain: errorDomain, code: 0, userInfo: userInfo)
+    }
   }
   
 }
