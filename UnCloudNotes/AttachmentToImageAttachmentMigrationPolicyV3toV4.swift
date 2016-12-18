@@ -48,5 +48,10 @@ class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy 
         newAttachment.setValue(destinationValue, forKey: destinationName)
       }
     }
+    
+    if let image = sInstance.value(forKey: "image") as? UIImage {
+      newAttachment.setValue(image.size.width, forKey: "width")
+      newAttachment.setValue(image.size.height, forKey: "height")
+    }
 }
 }
