@@ -38,4 +38,15 @@ class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy 
     }
   }
   
+    try traversePropertyMappings {
+      propertyMapping, destinationName in
+      if let valueExpression = propertyMapping.valueExpression {
+        let context: NSMutableDictionary = ["source": sInstance]
+        guard let destinationValue = valueExpression.expressionValue(with: sInstance, context: context) else {
+          return
+        }
+        newAttachment.setValue(destinationValue, forKey: destinationName)
+      }
+    }
+}
 }
