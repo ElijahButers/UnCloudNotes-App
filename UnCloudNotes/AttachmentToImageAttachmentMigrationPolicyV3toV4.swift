@@ -53,5 +53,8 @@ class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy 
       newAttachment.setValue(image.size.width, forKey: "width")
       newAttachment.setValue(image.size.height, forKey: "height")
     }
+    
+    let body = sInstance.value(forKey: "note.body") as? NSString ?? ""
+    newAttachment.setValue(body.substring(to: 80), forKey: "caption")
 }
 }
