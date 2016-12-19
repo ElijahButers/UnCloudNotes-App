@@ -56,5 +56,7 @@ class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy 
     
     let body = sInstance.value(forKey: "note.body") as? NSString ?? ""
     newAttachment.setValue(body.substring(to: 80), forKey: "caption")
-}
+    
+    manager.associate(sourceInstance: sInstance, withDestinationInstance: newAttachment, for: mapping)
+  }
 }
