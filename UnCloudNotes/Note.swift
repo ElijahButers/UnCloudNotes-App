@@ -38,7 +38,8 @@ class Note: NSManagedObject {
   
   var image: UIImage? {
     
-    return latestAttachment?.image
+    let imageAttachment = latestAttachment as? ImageAttachment
+    return imageAttachment?.image
   }
   
   var latestAttachment: Attachment? {
