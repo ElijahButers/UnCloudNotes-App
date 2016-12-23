@@ -4,7 +4,7 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="attachments" inverseEntity="Note" syncable="YES"/>
     </entity>
-    <entity name="ImageAttachment" representedClassName="UnModuleNotes.ImageAttachment" parentEntity="Attachment" syncable="YES">
+    <entity name="ImageAttachment" representedClassName="UnCloudNotes.ImageAttachment" parentEntity="Attachment" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
