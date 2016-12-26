@@ -21,3 +21,8 @@ class DataMigrationManager {
     self.enableMigrations = enableMigrations
   }
 }
+
+//MARK: - Managed Object Model
+
+extension NSManagedObjectModel {
+}
