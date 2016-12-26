@@ -35,5 +35,14 @@ extension NSManagedObjectModel {
     
     return modelURLs(in: modelName).flatMap(NSManagedObjectModel.init)
   }
+  
+  class func uncloudNotesModel(named modelName: String) -> NSManagedObjectModel {
+    
+    let model = modelURLs(in: "UnCloudNotesDataModel")
+      .filter { $0.lastPathComponent == "\(modelName).mom" }
+      .first
+      .flatMap(NSManagedObjectModel.init)
+    return model ?? NSManagedObjectModel()
+  }
 
 }
