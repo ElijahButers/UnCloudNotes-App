@@ -25,4 +25,15 @@ class DataMigrationManager {
 //MARK: - Managed Object Model
 
 extension NSManagedObjectModel {
+  
+  private class func modelURLs(in modelFolder: String) -> [URL] {
+    
+    return Bundle.main.urls(forResourcesWithExtension: "mom", subdirectory: "\(modelFolder).momd") ?? []
+  }
+  
+  class func modelVersionsFor(modelNamed modelName: String) -> [NSManagedObjectModel]{
+    
+    return modelURLs(in: modelName).flatMap(NSManagedObjectModel.init)
+  }
+
 }
