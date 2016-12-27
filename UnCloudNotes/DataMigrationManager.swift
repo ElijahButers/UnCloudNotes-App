@@ -22,6 +22,10 @@ class DataMigrationManager {
   }
 }
 
+func == (firstModel: NSManagedObjectModel, otherModel: NSManagedObjectModel) -> Bool {
+  return firstModel.entitiesByName == otherModel.entitiesByName
+}
+
 //MARK: - Managed Object Model
 
 extension NSManagedObjectModel {
