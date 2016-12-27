@@ -44,5 +44,9 @@ extension NSManagedObjectModel {
       .flatMap(NSManagedObjectModel.init)
     return model ?? NSManagedObjectModel()
   }
+  
+  class var version1: NSManagedObjectModel {
+    return uncloudNotesModel(named: "UnCloudNotesDataModel")
+  }
 
 }
