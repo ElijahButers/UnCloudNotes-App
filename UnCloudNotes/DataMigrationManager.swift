@@ -48,5 +48,9 @@ extension NSManagedObjectModel {
   class var version1: NSManagedObjectModel {
     return uncloudNotesModel(named: "UnCloudNotesDataModel")
   }
+  
+  var isVersion1: Bool {
+    return self == type(of: self).version1
+  }
 
 }
