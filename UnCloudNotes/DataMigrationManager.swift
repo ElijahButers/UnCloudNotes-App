@@ -20,6 +20,13 @@ class DataMigrationManager {
     self.modelName = modelNamed
     self.enableMigrations = enableMigrations
   }
+  
+  private func store(at storeURL: URL, isCompatibleWithModel model: NSManagedObjectModel) -> Bool {
+    
+    let storeMetadata = metadataForStoreAtURL(storeURL: storeURL)
+    
+    return model.isConfiguration(withName: nil, compatibleWithStoreMetadata: storeMetadata)
+  }
 }
 
 func == (firstModel: NSManagedObjectModel, otherModel: NSManagedObjectModel) -> Bool {
