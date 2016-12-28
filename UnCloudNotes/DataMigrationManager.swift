@@ -40,6 +40,29 @@ class DataMigrationManager {
     }
     return metadata
   }
+  
+  // Current store URL and model
+  
+  private var applicationSupportURL: URL {
+    
+    let path = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .userDomainMask, true)
+      .first
+    return URL(fileURLWithPath: path!)
+  }
+  
+  private lazy var storeURL: URL = {
+    
+    let storeFileName = "\(self.storeName).sqlite"
+    return URL(fileURLWithPath: storeFileName, relativeTo: self.applicationSupportURL)
+  }()
+  
+  private var storeModel: NSManagedObjectModel? {
+    
+    return NSManagedObjectModel.modelVersionsFor(modelNamed: modelName)
+      .filter {
+        self.store(at: storeURL, isCompatibleWithModel: $0)
+    }.first
+  }
 }
 
 func == (firstModel: NSManagedObjectModel, otherModel: NSManagedObjectModel) -> Bool {
