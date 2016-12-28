@@ -27,6 +27,19 @@ class DataMigrationManager {
     
     return model.isConfiguration(withName: nil, compatibleWithStoreMetadata: storeMetadata)
   }
+  
+  private func metadataForStoreAtURL(storeURL: URL) -> [String: Any] {
+    
+    let metadata: [String: Any]
+    
+    do {
+      metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: NSSQLiteStoreType, at: storeURL, options: nil)
+    } catch {
+      metadata = [:]
+      print("Error retrieving metadata for store at URL: \(storeURL): \(error)")
+    }
+    return metadata
+  }
 }
 
 func == (firstModel: NSManagedObjectModel, otherModel: NSManagedObjectModel) -> Bool {
