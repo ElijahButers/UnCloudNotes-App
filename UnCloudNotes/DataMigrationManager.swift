@@ -41,7 +41,7 @@ class DataMigrationManager {
     return metadata
   }
   
-  // Current store URL and model
+  //MARK: - Current store URL and model
   
   private var applicationSupportURL: URL {
     
@@ -122,5 +122,14 @@ extension NSManagedObjectModel {
   
   var isVersion4: Bool {
     return self == type(of: self).version4
+  }
+  
+  // MARK: - Initializing a Managed Object Model
+  
+  class func model(named modelName: String, in bundle: Bundle = .main) -> NSManagedObjectModel {
+    
+    return bundle
+      .url(forResource: modelName, withExtension: "momd")
+      .flatMap(NSManagedObjectModel.init) ?? NSManagedObjectModel()
   }
 }
