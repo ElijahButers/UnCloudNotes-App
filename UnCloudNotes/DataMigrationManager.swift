@@ -21,6 +21,8 @@ class DataMigrationManager {
     self.enableMigrations = enableMigrations
   }
   
+  private lazy var currentModel: NSManagedObjectModel = .model(named: self.modelName)
+  
   private func store(at storeURL: URL, isCompatibleWithModel model: NSManagedObjectModel) -> Bool {
     
     let storeMetadata = metadataForStoreAtURL(storeURL: storeURL)
