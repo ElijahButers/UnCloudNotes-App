@@ -14,7 +14,13 @@ class DataMigrationManager {
   let enableMigrations: Bool
   let modelName: String
   let storeName: String = "UnCloudNotedDataModel"
-  var stack: CoreDataStack
+  var stack: CoreDataStack {
+    
+    guard enableMigrations, !store(at: storeURL, isCompatibleWithModel: currentModel)
+      else { return CoreDataStack(modelName: modelName) }
+    
+    return CoreDataStack(modelName: modelName)
+  }
   
   init(modelNamed: String, enableMigrations: Bool = false) {
     self.modelName = modelNamed
