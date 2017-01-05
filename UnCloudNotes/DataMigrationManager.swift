@@ -143,9 +143,17 @@ extension NSManagedObjectModel {
   
   // MARK: - Migration method
   
-  private func migrateStoreAt(URL storeURL: URL, fromModel from: NSManagedObjectModel, toModel to: NSManagedObjectModel, mappingModel: NSMappingModel? = nil) {
+  private func migrateStoreAt(URL storeURL: URL, fromModel from: NSManagedObjectModel, toModel to: NSManagedObjectModel, mappingModel: NSMappingModel? = nil) {
     
     let migrationManager = NSMigrationManager(sourceModel: from, destinationModel: to)
+    
+    var migrationMappingModel: NSMappingModel
+    if let mappingModel = mappingModel {
+      migrationMappingModel = mappingModel
+    } else {
+      migrationMappingModel = try! NSMappingModel
+      .inferredMappingModel(forSourceModel: from, destinationModel: to)
+    }
   }
 }
 
