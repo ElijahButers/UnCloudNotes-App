@@ -140,4 +140,13 @@ extension NSManagedObjectModel {
       .url(forResource: modelName, withExtension: "momd")
       .flatMap(NSManagedObjectModel.init) ?? NSManagedObjectModel()
   }
+  
+  // MARK: - Migration method
+  
+  private func migrateStoreAt(URL storeURL: URL, fromModel from: NSManagedObjectModel, toModel to: NSManagedObjectModel, mappingModel: NSMappingModel? = nil) {
+    
+    let migrationManager = NSMigrationManager(sourceModel: from, destinationModel: to)
+  }
 }
+
+
