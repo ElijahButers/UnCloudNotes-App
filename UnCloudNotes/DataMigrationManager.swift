@@ -52,6 +52,10 @@ class DataMigrationManager {
   // MARK: - Migration method
   
   func performMigration() {
+    
+    if !currentModel.isVersion4 {
+      fatalError("Can only handle migrations to version 4")
+    }
   }
   
   //MARK: - Current store URL and model
