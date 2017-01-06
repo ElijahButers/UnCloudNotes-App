@@ -163,6 +163,16 @@ extension NSManagedObjectModel {
     print("To Model: \(to.entityVersionHashesByName)")
     print("Migration store: \(storeURL) to \(destinationURL)")
     print("Mapping Model: \(mappingModel)")
+    
+    let success: Bool
+      do {
+        try migrationManager.migrateStore(from: storeURL, sourceType: NSSQLiteStoreType, options: nil, with: migrationMappingModel, toDestinationURL: destinationURL, destinationType: NSSQLiteStoreType, destinationOptions: nil)
+        success = true
+      } catch {
+        success = false
+        print("Migration failed: \(error)")
+    }
+    
   }
 }
 
