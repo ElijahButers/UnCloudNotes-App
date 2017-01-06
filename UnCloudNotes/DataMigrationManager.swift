@@ -173,6 +173,17 @@ extension NSManagedObjectModel {
         print("Migration failed: \(error)")
     }
     
+    if success {
+      print("Migration Completed Successfully")
+      
+      let fileManager = FileManager.default
+      do {
+        try fileManager.removeItem(at: storeURL)
+        try fileManager.moveItem(at: destinationURL, to: storeURL)
+      } catch {
+        print("Error migrating \(error)")
+      }
+    }
   }
 }
 
