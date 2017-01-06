@@ -154,6 +154,15 @@ extension NSManagedObjectModel {
       migrationMappingModel = try! NSMappingModel
       .inferredMappingModel(forSourceModel: from, destinationModel: to)
     }
+    
+    let targetURL = storeURL.deletingLastPathComponent()
+    let destinationName = storeURL.lastPathComponent + "~1"
+    let destinationURL = targetURL.appendingPathComponent(destinationName)
+    
+    print("From Model: \(from.entityVersionHashesByName)")
+    print("To Model: \(to.entityVersionHashesByName)")
+    print("Migration store: \(storeURL) to \(destinationURL)")
+    print("Mapping Model: \(mappingModel)")
   }
 }
 
