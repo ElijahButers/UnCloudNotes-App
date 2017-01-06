@@ -49,6 +49,11 @@ class DataMigrationManager {
     return metadata
   }
   
+  // MARK: - Migration method
+  
+  func performMigration() {
+  }
+  
   //MARK: - Current store URL and model
   
   private var applicationSupportURL: URL {
