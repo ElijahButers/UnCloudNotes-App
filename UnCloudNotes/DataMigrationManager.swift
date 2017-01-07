@@ -56,7 +56,75 @@ class DataMigrationManager {
     if !currentModel.isVersion4 {
       fatalError("Can only handle migrations to version 4")
     }
+    
+    if let storeModel = self.storeModel {
+      if storeModel.isVersion1 {
+        let destinationModel = NSManagedObjectModel.version2
+        
+        migrateStoreAt(URL: storeURL, fromModel: storeModel, toModel: destinationModel)
+        performMigration()
+      } else if storeModel.isVersion2 {
+        let destinationModel = NSManagedObjectModel.version3
+        let mappingModel = NSMappingModel(from: nil, forSourceModel: storeModel, destinationModel: destinationModel)
+        
+        migrateStoreAt(URL: storeURL, fromModel: storeModel, toModel: destinationModel, mappingModel: mappingModel)
+          
+        performMigration()
+      } else if storeModel.isVersion3 {
+        let destinationModel = NSManagedObjectModel.version4
+        let mappingModel = NSMappingModel(from: nil, forSourceModel: storeModel, destinationModel: destinationModel)
+        
+        migrateStoreAt(URL: storeURL, fromModel: storeModel, toModel: destinationModel, mappingModel: mappingModel)
+        performMigration()
+      }
+    }
   }
+  
+  // MARK: - Migration method
+  
+  private func migrateStoreAt(URL storeURL: URL, fromModel from: NSManagedObjectModel, toModel to: NSManagedObjectModel, mappingModel: NSMappingModel? = nil) {
+    
+    let migrationManager = NSMigrationManager(sourceModel: from, destinationModel: to)
+    
+    var migrationMappingModel: NSMappingModel
+    if let mappingModel = mappingModel {
+      migrationMappingModel = mappingModel
+    } else {
+      migrationMappingModel = try! NSMappingModel
+        .inferredMappingModel(forSourceModel: from, destinationModel: to)
+    }
+    
+    let targetURL = storeURL.deletingLastPathComponent()
+    let destinationName = storeURL.lastPathComponent + "~1"
+    let destinationURL = targetURL.appendingPathComponent(destinationName)
+    
+    print("From Model: \(from.entityVersionHashesByName)")
+    print("To Model: \(to.entityVersionHashesByName)")
+    print("Migration store: \(storeURL) to \(destinationURL)")
+    print("Mapping Model: \(mappingModel)")
+    
+    let success: Bool
+    do {
+      try migrationManager.migrateStore(from: storeURL, sourceType: NSSQLiteStoreType, options: nil, with: migrationMappingModel, toDestinationURL: destinationURL, destinationType: NSSQLiteStoreType, destinationOptions: nil)
+      success = true
+    } catch {
+      success = false
+      print("Migration failed: \(error)")
+    }
+    
+    if success {
+      print("Migration Completed Successfully")
+      
+      let fileManager = FileManager.default
+      do {
+        try fileManager.removeItem(at: storeURL)
+        try fileManager.moveItem(at: destinationURL, to: storeURL)
+      } catch {
+        print("Error migrating \(error)")
+      }
+    }
+  }
+
   
   //MARK: - Current store URL and model
   
@@ -148,51 +216,6 @@ extension NSManagedObjectModel {
     return bundle
       .url(forResource: modelName, withExtension: "momd")
       .flatMap(NSManagedObjectModel.init) ?? NSManagedObjectModel()
-  }
-  
-  // MARK: - Migration method
-  
-  private func migrateStoreAt(URL storeURL: URL, fromModel from: NSManagedObjectModel, toModel to: NSManagedObjectModel, mappingModel: NSMappingModel? = nil) {
-    
-    let migrationManager = NSMigrationManager(sourceModel: from, destinationModel: to)
-    
-    var migrationMappingModel: NSMappingModel
-    if let mappingModel = mappingModel {
-      migrationMappingModel = mappingModel
-    } else {
-      migrationMappingModel = try! NSMappingModel
-      .inferredMappingModel(forSourceModel: from, destinationModel: to)
-    }
-    
-    let targetURL = storeURL.deletingLastPathComponent()
-    let destinationName = storeURL.lastPathComponent + "~1"
-    let destinationURL = targetURL.appendingPathComponent(destinationName)
-    
-    print("From Model: \(from.entityVersionHashesByName)")
-    print("To Model: \(to.entityVersionHashesByName)")
-    print("Migration store: \(storeURL) to \(destinationURL)")
-    print("Mapping Model: \(mappingModel)")
-    
-    let success: Bool
-      do {
-        try migrationManager.migrateStore(from: storeURL, sourceType: NSSQLiteStoreType, options: nil, with: migrationMappingModel, toDestinationURL: destinationURL, destinationType: NSSQLiteStoreType, destinationOptions: nil)
-        success = true
-      } catch {
-        success = false
-        print("Migration failed: \(error)")
-    }
-    
-    if success {
-      print("Migration Completed Successfully")
-      
-      let fileManager = FileManager.default
-      do {
-        try fileManager.removeItem(at: storeURL)
-        try fileManager.moveItem(at: destinationURL, to: storeURL)
-      } catch {
-        print("Error migrating \(error)")
-      }
-    }
   }
 }
 
